@@ -38,21 +38,157 @@ namespace BitchLand//must have this namespace
 
 		public void doWork()
 		{
-            Main.Instance.Player.RunBlockers = new List<string>();
-            Main.Instance.Player.MoveBlockers = new List<string>();
-            Main.Instance.Player.ThisPersonInt.InteractBlockers = new List<string>();
-            Main.Instance.Player.CanMove = true;
-            Main.Instance.Player.InteractingWith.CanLeave = true;
-            Main.Instance.Player.Interacting = false;
-            Main.Instance.Player.InCombat = false;
-            Main.Instance.CanSaveFlags.Remove("CantMoveNow");
-            Main.Instance.CanSaveFlags = Main.Instance.CanSaveFlags;
-            Main.Instance.GameplayMenu.SleepMenu.SetActive(false);
-            Main.Instance.GameplayMenu.EscMenu.SetActive(false);
-            Main.Instance.GameplayMenu.TextInputMenu.SetActive(false);
-            Main.Instance.GameplayMenu.TraderMenu.SetActive(false);
-            Main.Instance.GameplayMenu.EnableMove();
-            Main.Instance.GameplayMenu.AllowCursor();
+            try
+            {
+                Main.Instance.Player.RunBlockers.Clear();
+            }
+            catch
+            {
+
+                try
+                {
+                    Main.Instance.Player.RunBlockers = new List<string>();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            try
+            {
+                Main.Instance.Player.MoveBlockers.Clear();
+            }
+            catch
+            {
+
+                try
+                {
+                    Main.Instance.Player.MoveBlockers = new List<string>();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            try
+            {
+                Main.Instance.Player.ThisPersonInt.InteractBlockers.Clear();
+            }
+            catch
+            {
+
+                try
+                {
+                    Main.Instance.Player.ThisPersonInt.InteractBlockers = new List<string>();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            try
+            {
+                Main.Instance.Player.CanMove = true;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.InteractingWith.CanLeave = true;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.Interacting = false;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.InCombat = false;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.CanSaveFlags.Remove("CantMoveNow");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                Main.Instance.CanSaveFlags = Main.Instance.CanSaveFlags;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.SleepMenu.SetActive(false);
+            }
+            catch (Exception e)
+            {
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.EscMenu.SetActive(false);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.TextInputMenu.SetActive(false);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.TraderMenu.SetActive(false);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.EnableMove();
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.AllowCursor();
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME!");
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         public static bl_UnstuckMeModDoWork Instance = new bl_UnstuckMeModDoWork();
