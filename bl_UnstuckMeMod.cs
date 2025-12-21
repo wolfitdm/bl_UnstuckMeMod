@@ -192,11 +192,45 @@ namespace BitchLand//must have this namespace
 
             try
             {
+                Main.Instance.Player.UserControl.UnstuckPlayer();
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.UserControl.m_Character.m_Animator.SetFloat("Forward", 0.5f);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.UserControl.m_Character.m_Animator.SetFloat("Turn", 0.5f);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.UserControl.m_Character.m_Rigidbody.velocity = Vector3.one;
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
                 Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME!");
             }
             catch (Exception ex)
             {
             }
+
+            return;
         }
 
         public static bl_UnstuckMeModDoWork Instance = new bl_UnstuckMeModDoWork();
