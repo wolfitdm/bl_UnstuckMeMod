@@ -224,7 +224,22 @@ namespace BitchLand//must have this namespace
 
             try
             {
-                Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME!");
+                Main.Instance.PeopleFollowingPlayer.Clear();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    Main.Instance.PeopleFollowingPlayer = new List<Person>();
+                }
+                catch (Exception e)
+                {
+                }
+            }
+
+            try
+            {
+                Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME 2.0!");
             }
             catch (Exception ex)
             {
