@@ -224,22 +224,24 @@ namespace BitchLand//must have this namespace
 
             try
             {
-                Main.Instance.PeopleFollowingPlayer.Clear();
+                if (Main.Instance.PeopleFollowingPlayer.Count > 0)
+                {
+                    Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME 2.0 Following Player ");
+                    int index = Main.Instance.PeopleFollowingPlayer.Count - 1;
+                    if (Main.Instance.Player.transform != null && Main.Instance.PeopleFollowingPlayer[index].transform != null)
+                    {
+                        Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME MINI F8 2.0 Following Player");
+                        Main.Instance.PeopleFollowingPlayer[index].transform.position = Main.Instance.Player.transform.position;
+                    }
+                }
             }
             catch (Exception ex)
             {
-                try
-                {
-                    Main.Instance.PeopleFollowingPlayer = new List<Person>();
-                }
-                catch (Exception e)
-                {
-                }
             }
 
             try
             {
-                Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME 2.0!");
+                Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME 3.0!");
             }
             catch (Exception ex)
             {
