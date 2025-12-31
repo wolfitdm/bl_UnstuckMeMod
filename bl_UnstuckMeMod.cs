@@ -35,9 +35,95 @@ namespace BitchLand//must have this namespace
 				this.OnDisable();
 			}
 		}
+        public GameObject getInteract()
+        {
+            try
+            {
+                if (Main.Instance.Player == null || Main.Instance.Player.WeaponInv == null || Main.Instance.Player.WeaponInv.IntLookingAt == null)
+                {
+                    return null;
+                }
 
-		public void doWork()
+                Interactible la = Main.Instance.Player.WeaponInv.IntLookingAt;
+
+                if (la != null)
+                {
+                    GameObject ga = la.gameObject;
+                    return ga;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return null;
+        }
+        public GameObject getPersonInteract()
+        {
+            GameObject ga = this.getInteract();
+
+            if (ga == null)
+            {
+                return null;
+            }
+
+            Interactible la = ga.GetComponent<Interactible>();
+
+            if (la != null)
+            {
+                if (la is int_Person)
+                {
+                    int_Person int_thisPerson = (int_Person)la;
+                    if (int_thisPerson.ThisPerson != null)
+                    {
+                        Person thisPerson = int_thisPerson.ThisPerson;
+                        return thisPerson.gameObject;
+                    }
+                }
+            }
+
+            return null;
+        }
+        public void doWork()
 		{
+            try
+            {
+                GameObject personGa = this.getPersonInteract();
+                if (personGa != null)
+                {
+                    Main.Instance.GameplayMenu.ShowNotification("unstuck me from the chat");
+                    Person person = personGa.GetComponent<Person>();
+                    if (person != null)
+                    {
+                        Main.Instance.GameplayMenu.ShowNotification("unstuck me from the chat really");
+                        int_Person personInt = person.ThisPersonInt;
+                        if (personInt != null)
+                        {
+                            Main.Instance.GameplayMenu.ShowNotification("unstuck me from the chat really really");
+                            personInt.EndTheChat();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.UserControl.enabled = true;
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                Main.Instance.Player.UserControl.ThirdCamPositionType = Main.Instance.Player.UserControl.ThirdCamPositionTypeOnSettings;
+            }
+            catch
+            {
+            }
+
             try
             {
                 Main.Instance.Player.RunBlockers.Clear();
@@ -224,14 +310,47 @@ namespace BitchLand//must have this namespace
 
             try
             {
+                UI_Gameplay _this = (UI_Gameplay)Main.Instance.GameplayMenu;
+                try
+                {
+                    _this.CloseStorage();
+                }
+                catch (Exception ex)
+                {
+                }
+
+                try
+                {
+                    _this.CloseEscMenu();
+                }
+                catch (Exception ex)
+                {
+                }
+
+                try
+                {
+                    _this.CloseJournal();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            try
+            {
                 if (Main.Instance.PeopleFollowingPlayer.Count > 0)
                 {
                     Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME 2.0 Following Player ");
-                    int index = Main.Instance.PeopleFollowingPlayer.Count - 1;
-                    if (Main.Instance.Player.transform != null && Main.Instance.PeopleFollowingPlayer[index].transform != null)
+                    for (int i = 0; i < Main.Instance.PeopleFollowingPlayer.Count; i++)
                     {
-                        Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME MINI F8 2.0 Following Player");
-                        Main.Instance.PeopleFollowingPlayer[index].transform.position = Main.Instance.Player.transform.position;
+                        if (Main.Instance.Player.transform != null && Main.Instance.PeopleFollowingPlayer[i].transform != null)
+                        {
+                            Main.Instance.GameplayMenu.ShowNotification("UNSTUCK ME MINI F8 2.0 Following Player ");
+                            Main.Instance.PeopleFollowingPlayer[i].transform.position = Main.Instance.Player.transform.position;
+                        }
                     }
                 }
             }
