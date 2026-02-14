@@ -83,6 +83,16 @@ namespace BitchLand//must have this namespace
 
             return null;
         }
+        public static void BL_CloseEscMenu()
+        {
+            Main.Instance.GameplayMenu.OpenEscMenu();
+            Main.Instance.GameplayMenu.CloseEscMenu();
+        }
+        public static void BL_CloseJournal()
+        {
+            Main.Instance.GameplayMenu.OpenJournal();
+            Main.Instance.GameplayMenu.CloseJournal();
+        }
         public void doWork()
 		{
             try
@@ -321,7 +331,7 @@ namespace BitchLand//must have this namespace
 
                 try
                 {
-                    _this.CloseEscMenu();
+                    BL_CloseEscMenu();
                 }
                 catch (Exception ex)
                 {
@@ -329,7 +339,7 @@ namespace BitchLand//must have this namespace
 
                 try
                 {
-                    _this.CloseJournal();
+                    BL_CloseJournal();
                 }
                 catch (Exception ex)
                 {
